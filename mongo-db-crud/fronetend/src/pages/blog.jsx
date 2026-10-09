@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import axios from "axios"
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { id } from 'zod/v4/locales';
 
 const Blog = () => {
 
@@ -50,7 +51,7 @@ const Blog = () => {
 
   const creatBlog = async blogData => {
 
-    await axios.post(`${API_URL}/create`, blogData)
+    await axios.post(`${API_URL} /blog/create`, blogData)
     try {
       toast.success("Blog create success")
       readBlog()
@@ -65,7 +66,7 @@ const Blog = () => {
 
   const readBlog = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/BLOG`)
+      const { data } = await axios.get(`${API_URL}/blog/remove/${id}`)
       console.log(data);
 
       // toast.success("Blog read success")
