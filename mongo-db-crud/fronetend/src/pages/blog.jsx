@@ -13,7 +13,9 @@ const Blog = () => {
   const [allBlogs, setAllblogs] = useState([])
   const [selectdBlogs, setSelectdblogs] = useState(null)
 
-  const API_URL = "http://localhost:5000/blog"
+  const API_URL = import.meta.env.VITE_NODE_ENV === "development"
+    ? import.meta.env.VITE_LOCAL_ENV
+    : import.meta.env.VITE_LIVE_ENV
   const schema = z.object({
     title: z.string().min(3),
     desc: z.string().min(3, 'Minimum 3 characters'),
